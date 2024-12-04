@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    {% block styles %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div id="flash-error" class="notification is-danger is-pulled-right" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding-right: 2.5rem;">
+                        <button class="delete" style="right: 0.75rem;"></button>
+                        {{ message }}
+                        <progress class="progress is-small" value="100" max="100" style="margin-top: 10px;"></progress>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const flashError = document.getElementById('flash-error');
+                    if (flashError) {
+                        const progressBar = flashError.querySelector('.progress');
+                        const duration = 5000;
+                        const interval = 50;
+                        let timeLeft = duration;
+
+                        const countdown = setInterval(() => {
+                            timeLeft -= interval;
+                            progressBar.value = (timeLeft / duration) * 100;
+                            if (timeLeft <= 0) {
+                                clearInterval(countdown);
+                                flashError.remove();
+                            }
+                        }, interval);
+
+                        const deleteButton = flashError.querySelector('.delete');
+                        deleteButton.addEventListener('click', () => {
+                            clearInterval(countdown);
+                            flashError.remove();
+                        });
+                    }
+                });
+            </script>
+        {% endif %}
+    {% endwith %}
+
+
+    {% block content %}
+
+    <nav>
+        {% block nav %}
+        {% include 'components/navbar.html' %}
+        {% endblock %}
+    </nav>
+
+    <main>
+        {% block main %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+
+        {% endblock %}
+    </footer>
+
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}
+
+    {% endblock %}
+</body>
+
+</html>

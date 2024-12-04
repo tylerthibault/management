@@ -1,0 +1,20 @@
+<form id="child-form" action="{{ url_for('user.login') }}" method="POST" style="display: none;">
+    {{ child_form.hidden_tag() }}
+    <div class="field">
+        <label class="label">{{ child_form.username.label }}</label>
+        <div class="control">
+            {{ child_form.username(class="input", required=True) }}
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">{{ child_form.pin.label }}</label>
+        <div class="control">
+            {{ child_form.pin(class="input", required=True) }}
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary is-fullwidth" type="submit">Login as Child</button>
+        </div>
+    </div>
+</form>

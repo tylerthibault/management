@@ -1,0 +1,103 @@
+{% extends 'bases/main.html' %}
+
+{% block main %}
+<section class="section">
+    <div class="container">
+        <h1 class="title is-2 has-text-centered">Register</h1>
+        <div class="tabs is-centered">
+            <ul>
+                <li class="is-active"><a id="parent-tab" class="is-size-5 has-text-weight-bold">Parent</a></li>
+                <li><a id="child-tab" class="is-size-5 has-text-weight-bold">Child</a></li>
+            </ul>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <form id="parent-form" action="{{ url_for('user.register') }}" method="POST">
+                    {{ parent_form.hidden_tag() }}
+                    <div class="field">
+                        <label class="label">First Name</label>
+                        <div class="control">
+                            {{ parent_form.first_name(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Last Name</label>
+                        <div class="control">
+                            {{ parent_form.last_name(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            {{ parent_form.email(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            {{ parent_form.password(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Confirm Password</label>
+                        <div class="control">
+                            {{ parent_form.confirm_password(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary is-fullwidth" type="submit">Register as Parent</button>
+                        </div>
+                    </div>
+                </form>
+                <form id="child-form" action="{{ url_for('user.register') }}" method="POST" style="display: none;">
+                    {{ child_form.hidden_tag() }}
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            {{ child_form.username(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">PIN</label>
+                        <div class="control">
+                            {{ child_form.pin(class="input", required=True) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary is-fullwidth" type="submit">Register as Child</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="has-text-centered mt-4">
+                    Already have an account? <a href="{{ url_for('user.login') }}">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const parentTab = document.getElementById('parent-tab');
+        const childTab = document.getElementById('child-tab');
+        const parentForm = document.getElementById('parent-form');
+        const childForm = document.getElementById('child-form');
+
+        parentTab.addEventListener('click', () => {
+            parentTab.parentElement.classList.add('is-active');
+            childTab.parentElement.classList.remove('is-active');
+            parentForm.style.display = 'block';
+            childForm.style.display = 'none';
+        });
+
+        childTab.addEventListener('click', () => {
+            childTab.parentElement.classList.add('is-active');
+            parentTab.parentElement.classList.remove('is-active');
+            childForm.style.display = 'block';
+            parentForm.style.display = 'none';
+        });
+    });
+</script>
+{% endblock %}

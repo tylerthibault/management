@@ -1,0 +1,20 @@
+<form id="parent-form" action="{{ url_for('user.login') }}" method="POST">
+    {{ parent_form.hidden_tag() }}
+    <div class="field">
+        <label class="label">{{ parent_form.email.label }}</label>
+        <div class="control">
+            {{ parent_form.email(class="input", required=True) }}
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">{{ parent_form.password.label }}</label>
+        <div class="control">
+            {{ parent_form.password(class="input", required=True) }}
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary is-fullwidth" type="submit">Login as Parent</button>
+        </div>
+    </div>
+</form>
