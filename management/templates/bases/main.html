@@ -17,7 +17,7 @@
     <div class="flash">
         {% with messages = get_flashed_messages(with_categories=False) %}
         {% if messages %}
-        <div class="card mx-2" style="position: fixed; right: 10px; top: 10px; z-index: 1000;">
+        <div class="card mx-2" style="position: fixed; right: 10px; bottom: 10px; z-index: 1000;">
             <div>
                 {% for message in messages %}
                 <p style="margin: 0">{{ message }}</p>

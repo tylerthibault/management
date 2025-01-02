@@ -25,6 +25,7 @@ def login():
 
     if user:
         session['user_id'] = user.id
+        session['org_id'] = user.org_id
         flash('Login successful!')
         return redirect(url_for('routes.dashboard'))
     else:
@@ -35,6 +36,7 @@ def login():
 @login_required
 def logout():
     del session['user_id']
+    del session['org_id']
     flash('Logged out successfully.')
     return redirect(url_for('users.index'))
 
