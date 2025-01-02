@@ -1,0 +1,155 @@
+
+{% extends 'bases/main.html' %}
+
+{% block main %}
+    <section class="hero is-info is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Welcome to Management</h1>
+                <p class="subtitle">Management is a user management tool that allows you to place users into roles and control access to pages.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 class="title">Features</h2>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <span>User Management</span>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Role Management</span><!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Welcome | Modern Landing Page</title>
+                        <!-- Framework CSS -->
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/reset.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/main.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/color.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/typography.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/grid.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/components.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/utilities.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/animation.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/spacing.css') }}">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/responsive_design.css') }}">
+                        
+                        <style>
+                            :root {
+                                --primary-color: #4a90e2;
+                                --secondary-color: #2ecc71;
+                                --text-color: #333;
+                                --bg-color: #fff;
+                                --card-bg: #f5f5f5;
+                            }
+                    
+                            [data-theme="dark"] {
+                                --primary-color: #64b5f6;
+                                --secondary-color: #4caf50;
+                                --text-color: #f5f5f5;
+                                --bg-color: #1a1a1a;
+                                --card-bg: #2d2d2d;
+                            }
+                    
+                            body {
+                                background-color: var(--bg-color);
+                                color: var(--text-color);
+                                transition: all 0.3s ease;
+                            }
+                    
+                            .theme-toggle {
+                                position: fixed;
+                                top: 20px;
+                                right: 20px;
+                                z-index: 1000;
+                            }
+                    
+                            .feature-card {
+                                background: var(--card-bg);
+                                border-radius: 8px;
+                                padding: 2rem;
+                                transition: transform 0.3s ease;
+                            }
+                    
+                            .feature-card:hover {
+                                transform: translateY(-5px);
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <button class="theme-toggle btn btn-outline" onclick="toggleTheme()">🌓 Toggle Theme</button>
+                    
+                        <header class="container text-center py-xl">
+                            <h1 class="display-1 mb-md animate-fade-in">Welcome to Our Platform</h1>
+                            <p class="lead mb-lg animate-fade-in-up">Discover the power of modern web development</p>
+                            <div class="flex justify-center gap-md">
+                                <a href="#features" class="btn btn-primary animate-fade-in">Get Started</a>
+                                <a href="#contact" class="btn btn-outline animate-fade-in">Learn More</a>
+                            </div>
+                        </header>
+                    
+                        <section id="features" class="container py-xl">
+                            <div class="grid grid-cols-3 gap-lg">
+                                <div class="feature-card animate-fade-in">
+                                    <h3 class="h3 mb-md">Responsive Design</h3>
+                                    <p>Built with modern responsive design principles for all devices.</p>
+                                </div>
+                                <div class="feature-card animate-fade-in" style="animation-delay: 0.2s;">
+                                    <h3 class="h3 mb-md">Dark Mode</h3>
+                                    <p>Seamless dark mode integration for better user experience.</p>
+                                </div>
+                                <div class="feature-card animate-fade-in" style="animation-delay: 0.4s;">
+                                    <h3 class="h3 mb-md">Modern Framework</h3>
+                                    <p>Powered by our robust CSS framework for consistent styling.</p>
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="contact" class="container py-xl bg-accent text-center">
+                            <h2 class="h1 mb-lg">Ready to Get Started?</h2>
+                            <p class="lead mb-xl">Join thousands of developers building amazing applications</p>
+                            <a href="#" class="btn btn-primary btn-lg">Sign Up Now</a>
+                        </section>
+                    
+                        <footer class="container py-lg text-center">
+                            <p>&copy; 2025 Your Company. All rights reserved.</p>
+                        </footer>
+                    
+                        <script>
+                            function toggleTheme() {
+                                const body = document.body;
+                                if (body.getAttribute('data-theme') === 'dark') {
+                                    body.removeAttribute('data-theme');
+                                } else {
+                                    body.setAttribute('data-theme', 'dark');
+                                }
+                            }
+                    
+                            // Check user's preferred color scheme
+                            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                document.body.setAttribute('data-theme', 'dark');
+                            }
+                        </script>
+                    </body>
+                    </html>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-key"></i>
+                    <span>Page Access Control</span>
+                </li>
+            </ul>
+            <p class="content">
+                <a class="button is-primary" href="/management/users">
+                    <span class="icon is-small">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span>Create a user</span>
+                </a>
+            </p>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="py-xl">
+    <div class="grid grid-cols-1 gap-lg">
+        <div>
+            <h3 class="h3 mb-md">Login</h3>
+            <form action="{{ url_for('users.login') }}" method="POST">
+                <div class="form-group mb-md">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group mb-md">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn bg-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/framework/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Management</title>
+
+    {% block styles %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=False) %}
+        {% if messages %}
+        <div class="card mx-2" style="position: fixed; right: 10px; top: 10px; z-index: 1000;">
+            <div>
+                {% for message in messages %}
+                <p style="margin: 0">{{ message }}</p>
+                <script>
+                    setTimeout(function () {
+                        document.querySelector(".flash").remove();
+                    }, 5000);
+                </script>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+    {% block content %}
+    <header>
+        {% block header %}
+
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block main %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+
+        {% endblock %}
+    </footer>
+
+    {% endblock %}
+
+    {% block scrips %}
+
+    {% endblock %}
+</body>
+
+</html>

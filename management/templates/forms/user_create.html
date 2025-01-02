@@ -1,0 +1,31 @@
+<div class="py-xl">
+    <div class="grid grid-cols-1 gap-lg">
+        <div>
+            <h3 class="h3 mb-md">Create User</h3>
+            <form action="{{ url_for('users.create') }}" method="POST">
+                <div class="form-group mb-md">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" id="name" class="form-input" required>
+                </div>
+                <div class="form-group mb-md">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group mb-md">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" required>
+                </div>
+                <div class="form-group mb-md">
+                    <label for="org_id" class="form-label">Organization</label>
+                    <select name="org_id" id="org_id" class="form-input" required>
+                        <option value="">Select an organization</option>
+                        <!-- Add options dynamically from your backend -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn bg-success">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
